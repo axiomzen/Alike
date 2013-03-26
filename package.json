@@ -1,0 +1,17 @@
+{
+  "name": "kNN",
+  "version": "0.0.1",
+  "description": "A kNN library, comparing JS Objects using Euclidean distances, returning top k similar objects",
+  "main": "lib/main.js",
+  "devDependencies": {
+    "mocha": "1.8.1",
+    "should": "1.2.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "readmeFilename": "README.md"
+}
