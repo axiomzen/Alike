@@ -16,7 +16,7 @@ describe 'K Nearest Neighbor', ->
         nearestNeighbor {a:1}, [{a: 2}]
       ).should.not.throwError()
       (->
-        nearestNeighbor {a:1}, [{a:2},{b:3}], {option: false}
+        nearestNeighbor {a:1}, [{a:2},{a:3}], {option: false}
       ).should.not.throwError()
 
     it 'should accept objects only', ->
@@ -34,7 +34,12 @@ describe 'K Nearest Neighbor', ->
         nearestNeighbor {a:1}, {a:2}
       ).should.throwError 'Expecting an array as second argument'
 
-  describe 'for simple cases', ->
+    it 'should assert that all attributes in subject is present in object', ->
+      (->
+        nearestNeighbor {a:1}, [{a:2},{b:3}]
+      ).should.throwError "Missing attribute 'a' in '{\"b\":3}'"
+
+  describe.skip 'for simple cases', ->
     it 'should return an empty object/array if no Y', ->
       nearestNeighbor({a:1}, []).should.eql([])
     it 'should return nearest neighbor with single dimension', ->
