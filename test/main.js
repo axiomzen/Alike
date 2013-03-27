@@ -2,21 +2,21 @@
 (function() {
   var nearestNeighbor, should;
 
-  should = require("should");
+  should = require('should');
 
-  nearestNeighbor = require("../lib/main");
+  nearestNeighbor = require('../lib/main');
 
-  describe("K Nearest Neighbor", function() {
-    return describe("number of arguments", function() {
-      it("should be at least 2", function() {
+  describe('K Nearest Neighbor', function() {
+    describe('arguments', function() {
+      it('should be at least 2', function() {
         (function() {
           return nearestNeighbor();
-        }).should.throwError("Expecting at least 2 arguments");
+        }).should.throwError('Expecting at least 2 arguments');
         return (function() {
           return nearestNeighbor(1);
-        }).should.throwError("Expecting at least 2 arguments");
+        }).should.throwError('Expecting at least 2 arguments');
       });
-      return it("should accept 2 or 3", function() {
+      it('should accept 2 or 3', function() {
         (function() {
           return nearestNeighbor(1, 2);
         }).should.not.throwError();
@@ -24,6 +24,18 @@
           return nearestNeighbor(1, 2, 3);
         }).should.not.throwError();
       });
+      it('should accept objects only');
+      return it('should only accept array as second argument');
+    });
+    describe('with K=1', function() {
+      it('should return the nearest neighbor with fixed dimensionality');
+      it('should return the nearest neighbor with variable dimensionality');
+      return it('should return an empty object/array if no Y');
+    });
+    return describe('with K=5', function() {
+      it('should return 5 nearest neighbors with fixed dimensionality');
+      it('should return 5 nearest neighbor with variable dimensionality');
+      return it('should return all of Y sorted by distance if Y.length < 5');
     });
   });
 
