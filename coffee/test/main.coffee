@@ -13,14 +13,26 @@ describe 'K Nearest Neighbor', ->
 
     it 'should accept 2 or 3', ->
       (->
-        nearestNeighbor 1, 2
+        nearestNeighbor {a:1}, [{a: 2}]
       ).should.not.throwError()
       (->
-        nearestNeighbor 1, 2, 3
+        nearestNeighbor {a:1}, [{a:2},{b:3}], {option: false}
       ).should.not.throwError()
 
-    it 'should accept objects only'
-    it 'should only accept array as second argument'
+    it 'should accept objects only', ->
+      (->
+        nearestNeighbor 1, 2
+      ).should.throwError 'Expecting object arguments'
+
+    it 'should not accept null as objects', ->
+      (->
+        nearestNeighbor null, null
+      ).should.throwError 'Expecting object arguments'
+
+    it 'should only accept array as second argument', ->
+      (->
+        nearestNeighbor {a:1}, {a:2}
+      ).should.throwError 'Expecting an array as second argument'
 
   describe 'with K=1', ->
     it 'should return the nearest neighbor with fixed dimensionality'

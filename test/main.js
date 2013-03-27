@@ -18,14 +18,47 @@
       });
       it('should accept 2 or 3', function() {
         (function() {
-          return nearestNeighbor(1, 2);
+          return nearestNeighbor({
+            a: 1
+          }, [
+            {
+              a: 2
+            }
+          ]);
         }).should.not.throwError();
         return (function() {
-          return nearestNeighbor(1, 2, 3);
+          return nearestNeighbor({
+            a: 1
+          }, [
+            {
+              a: 2
+            }, {
+              b: 3
+            }
+          ], {
+            option: false
+          });
         }).should.not.throwError();
       });
-      it('should accept objects only');
-      return it('should only accept array as second argument');
+      it('should accept objects only', function() {
+        return (function() {
+          return nearestNeighbor(1, 2);
+        }).should.throwError('Expecting object arguments');
+      });
+      it('should not accept null as objects', function() {
+        return (function() {
+          return nearestNeighbor(null, null);
+        }).should.throwError('Expecting object arguments');
+      });
+      return it('should only accept array as second argument', function() {
+        return (function() {
+          return nearestNeighbor({
+            a: 1
+          }, {
+            a: 2
+          });
+        }).should.throwError('Expecting an array as second argument');
+      });
     });
     describe('with K=1', function() {
       it('should return the nearest neighbor with fixed dimensionality');
