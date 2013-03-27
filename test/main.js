@@ -60,14 +60,56 @@
         }).should.throwError('Expecting an array as second argument');
       });
     });
-    describe('with K=1', function() {
-      it('should return the nearest neighbor with fixed dimensionality');
-      it('should return the nearest neighbor with variable dimensionality');
-      return it('should return an empty object/array if no Y');
+    describe('for simple cases', function() {
+      it('should return an empty object/array if no Y', function() {
+        return nearestNeighbor({
+          a: 1
+        }, []).should.eql([]);
+      });
+      it('should return nearest neighbor with single dimension', function() {
+        return nearestNeighbor({
+          a: 1
+        }, [
+          {
+            a: 1
+          }, {
+            a: 2
+          }
+        ]).should.eql([
+          {
+            a: 1
+          }
+        ]);
+      });
+      return it('should return 2 nearest neighbors (in order) with single dimension', function() {
+        return nearestNeighbor({
+          a: 1
+        }, [
+          {
+            a: 1
+          }, {
+            a: 3
+          }, {
+            a: 0
+          }
+        ], {
+          k: 2
+        }).should.eql([
+          {
+            a: 1
+          }, {
+            a: 0
+          }
+        ]);
+      });
     });
-    return describe('with K=5', function() {
-      it('should return 5 nearest neighbors with fixed dimensionality');
-      it('should return 5 nearest neighbor with variable dimensionality');
+    return describe('with basic wine testCase', function() {
+      beforeEach(function() {
+        var testCase;
+        return testCase = require('./test_case');
+      });
+      it('should return the nearest neighbor');
+      it('should return 5 nearest neighbors, sorted by distance');
       return it('should return all of Y sorted by distance if Y.length < 5');
     });
   });

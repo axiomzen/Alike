@@ -1,5 +1,5 @@
-should = require('should')
-nearestNeighbor = require('../lib/main')
+should = require 'should'
+nearestNeighbor = require '../lib/main'
 
 describe 'K Nearest Neighbor', ->
   describe 'arguments', ->
@@ -34,12 +34,17 @@ describe 'K Nearest Neighbor', ->
         nearestNeighbor {a:1}, {a:2}
       ).should.throwError 'Expecting an array as second argument'
 
-  describe 'with K=1', ->
-    it 'should return the nearest neighbor with fixed dimensionality'
-    it 'should return the nearest neighbor with variable dimensionality'
-    it 'should return an empty object/array if no Y'
+  describe 'for simple cases', ->
+    it 'should return an empty object/array if no Y', ->
+      nearestNeighbor({a:1}, []).should.eql([])
+    it 'should return nearest neighbor with single dimension', ->
+      nearestNeighbor({a:1}, [{a:1}, {a:2}]).should.eql([{a:1}])
+    it 'should return 2 nearest neighbors (in order) with single dimension', ->
+      nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2}).should.eql([{a:1}, {a:0}])
 
-  describe 'with K=5', ->
-    it 'should return 5 nearest neighbors with fixed dimensionality'
-    it 'should return 5 nearest neighbor with variable dimensionality'
+  describe 'with basic wine testCase', ->
+    beforeEach ->
+      testCase = require './test_case'
+    it 'should return the nearest neighbor'
+    it 'should return 5 nearest neighbors, sorted by distance'
     it 'should return all of Y sorted by distance if Y.length < 5'
