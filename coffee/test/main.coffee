@@ -39,7 +39,7 @@ describe 'K Nearest Neighbor', ->
         nearestNeighbor {a:1}, [{a:2},{b:3}]
       ).should.throwError "Missing attribute 'a' in '{\"b\":3}'"
 
-  describe.skip 'for simple cases', ->
+  describe 'for simple cases', ->
     it 'should return an empty object/array if no Y', ->
       nearestNeighbor({a:1}, []).should.eql([])
     it 'should return nearest neighbor with single dimension', ->

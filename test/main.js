@@ -73,7 +73,7 @@
         }).should.throwError("Missing attribute 'a' in '{\"b\":3}'");
       });
     });
-    describe.skip('for simple cases', function() {
+    describe('for simple cases', function() {
       it('should return an empty object/array if no Y', function() {
         return nearestNeighbor({
           a: 1
