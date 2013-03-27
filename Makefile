@@ -4,7 +4,7 @@ coffee:
 watch-test:
 	./node_modules/.bin/mocha \
 	  --watch \
-	  --reporter landing
+	  --reporter nyan
 
 test:
 	./node_modules/.bin/mocha \
