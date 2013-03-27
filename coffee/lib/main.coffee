@@ -9,4 +9,10 @@ module.exports = (subject, objects, options) ->
   unless Array.isArray(arguments[1])
     throw new Error('Expecting an array as second argument')  
 
-  arguments
+  unless objects.length
+    return []
+
+  for attr of subject
+    for o in objects
+      unless attr of o
+        throw new Error("Missing attribute '#{attr}' in '#{JSON.stringify(o)}'")
