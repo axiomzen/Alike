@@ -5,11 +5,22 @@
   Takes 2 objects, and returns squared Euclidean distance based on the first object's attributes
   e.g. p1 = {a: 1} and p2 = {a: 2, b: 3, c: 5} will ignore extra attributes on p2 and return 1
   All attributes on p1 MUST be present in p2 (otherwise will be inaccurate if ignored)
+  Accepts optional third argument, which is an options hash: 
+   - [stdv] defines the stdv for each attr
+   - [weights] defines the weights for each attr (todo)
 ###
-exports.distance = (p1, p2) ->
+exports.distance = (p1, p2, opts) ->
   dist = 0
   for attr, val of p1
-    dist += Math.pow val - p2[attr], 2
+    x = val
+    y = p2[attr]
+
+    # Normalize if stdv values are passed in opts
+    if opts?.stdv
+      x = x / opts.stdv[attr]
+      y = y / opts.stdv[attr]
+
+    dist += Math.pow x - y, 2
   dist
 
 ###

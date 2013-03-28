@@ -77,4 +77,32 @@
     });
   });
 
+  describe('Standardized Euclidean Distance function', function() {
+    it('should accept 2 objects and the stdv for 1 dimension', function() {
+      return utils.distance({
+        a: 1
+      }, {
+        a: 5
+      }, {
+        stdv: {
+          a: 2
+        }
+      }).should.eql(4);
+    });
+    return it('should calculate correctly for 2 dimensions', function() {
+      return utils.distance({
+        a: 1,
+        b: 30
+      }, {
+        a: 5,
+        b: 50
+      }, {
+        stdv: {
+          a: 2,
+          b: 10
+        }
+      }).should.eql(8);
+    });
+  });
+
 }).call(this);

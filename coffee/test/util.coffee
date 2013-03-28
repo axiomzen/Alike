@@ -24,7 +24,11 @@ describe 'Standard Deviation', ->
       utils.stdv([{ a: 600 },{ a: 470 },{ a: 170 },{ a: 430 },{ a: 300 }])
     ).should.throwError 'No key parameter provided'
     
-
+describe 'Standardized Euclidean Distance function', ->
+  it 'should accept 2 objects and the stdv for 1 dimension', ->
+    utils.distance({ a: 1 }, { a: 5 }, { stdv: { a: 2 } }).should.eql(4)
+  it 'should calculate correctly for 2 dimensions', ->
+    utils.distance({ a: 1, b: 30 }, { a: 5, b: 50 }, { stdv: { a: 2, b: 10 } }).should.eql(8)
 
 # describe.skip 'Standardize', ->
 #   it 'returns the array in units of stdv from mean', ->
