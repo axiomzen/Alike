@@ -11,6 +11,17 @@ distance = (p1, p2) ->
     dist += Math.pow val - p2[attr], 2
   dist
 
+###
+  Standard Deviation
+###
+stdv = (array) ->
+  sum = array.reduce (a,b) -> a + b
+  mean = sum / array.length
+  ssqdiff = 0
+  for x in array
+    ssqdiff += Math.pow( x - mean, 2)
+  Math.sqrt(ssqdiff / array.length)
+
   
 module.exports = (subject, objects, options) ->
   # Argument checks
