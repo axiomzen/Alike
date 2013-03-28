@@ -26,7 +26,7 @@ describe 'K Nearest Neighbor', ->
       getLabels(nearestNeighbor(profile2, wineList.slice(0, 2), options)).should.eql(['A', 'B'])
       getLabels(nearestNeighbor(profile3, wineList.slice(0, 2), options)).should.eql(['B', 'A'])
 
-  describe 'with testCase that requires standardized Euclidean distance', ->
+  describe.skip 'with testCase that requires standardized Euclidean distance', ->
     testCase = require './test_case_standardize'
     wineList = testCase.wineList
     profile1 = testCase.tasteProfile1

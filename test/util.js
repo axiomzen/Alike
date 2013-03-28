@@ -45,4 +45,10 @@
     });
   });
 
+  describe('Standardize', function() {
+    return it('returns the array in units of stdv from mean', function() {
+      return utils.standardize([600, 470, 170, 430, 300]).should.eql([1.398290251863176, 0.5158740735029193, -1.5204709534822884, 0.24436140323822492, -0.6380547751220317]);
+    });
+  });
+
 }).call(this);

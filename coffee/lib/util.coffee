@@ -1,3 +1,4 @@
+
 ### 
   Euclidean distance function
   ----------
@@ -15,11 +16,10 @@ exports.distance = (p1, p2) ->
   Standard Deviation
 ###
 exports.stdv = (array) ->
-  sum = array.reduce (a,b) -> a + b
-  mean = sum / array.length
+  m = mean(array)
   ssqdiff = 0
   for x in array
-    ssqdiff += Math.pow( x - mean, 2)
+    ssqdiff += Math.pow( x - m, 2)
   Math.sqrt(ssqdiff / array.length)
 
 ###
@@ -28,3 +28,14 @@ exports.stdv = (array) ->
   Takes an array of objects with numerical attributes, and returns object with standardized values,
   with units in measures of standard deviation from mean. (See www.econ.upf.edu/~michael/stanford/maeb4.pdf)
 ###
+exports.standardize = (array) ->
+  m = mean array
+  s = exports.stdv array
+  ((x - m) / s for x in array)
+
+
+# ---  meta-utils  ---
+
+mean = (array) ->
+  sum = array.reduce (a,b) -> a + b
+  sum / array.length
