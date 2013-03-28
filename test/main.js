@@ -73,7 +73,7 @@
         }).should.throwError("Missing attribute 'a' in '{\"b\":3}'");
       });
     });
-    describe('for simple cases', function() {
+    return describe('for simple cases', function() {
       it('should return an empty object/array if no Y', function() {
         return nearestNeighbor({
           a: 1
@@ -115,15 +115,6 @@
           }
         ]);
       });
-    });
-    return describe('with basic wine testCase', function() {
-      beforeEach(function() {
-        var testCase;
-        return testCase = require('./test_case_simple');
-      });
-      it('should return the nearest neighbor');
-      it('should return 5 nearest neighbors, sorted by distance');
-      return it('should return all of Y sorted by distance if Y.length < 5');
     });
   });
 

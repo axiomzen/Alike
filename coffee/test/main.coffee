@@ -46,10 +46,3 @@ describe 'K Nearest Neighbor', ->
       nearestNeighbor({a:1}, [{a:1}, {a:2}]).should.eql([{a:1}])
     it 'should return 2 nearest neighbors (in order) with single dimension', ->
       nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2}).should.eql([{a:1}, {a:0}])
-
-  describe 'with basic wine testCase', ->
-    beforeEach ->
-      testCase = require './test_case_simple'
-    it 'should return the nearest neighbor'
-    it 'should return 5 nearest neighbors, sorted by distance'
-    it 'should return all of Y sorted by distance if Y.length < 5'
