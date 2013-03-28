@@ -43,7 +43,7 @@
     it('should calculate stdv given an array of numbers', function() {
       return utils.stdv([600, 470, 170, 430, 300]).should.eql(147.32277488562318);
     });
-    return it('should also accept objects with a key', function() {
+    it('should also accept objects with a key', function() {
       return utils.stdv([
         {
           a: 600
@@ -57,6 +57,23 @@
           a: 300
         }
       ], 'a').should.eql(147.32277488562318);
+    });
+    return it('should not accept objects without a key', function() {
+      return (function() {
+        return utils.stdv([
+          {
+            a: 600
+          }, {
+            a: 470
+          }, {
+            a: 170
+          }, {
+            a: 430
+          }, {
+            a: 300
+          }
+        ]);
+      }).should.throwError('No key parameter provided');
     });
   });
 

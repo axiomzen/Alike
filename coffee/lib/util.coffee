@@ -14,8 +14,14 @@ exports.distance = (p1, p2) ->
 
 ###
   Standard Deviation
+  ----------
+  Given an array of numbers, returns the stdv
+  Given an array of objects, require key parameter identifying the attribute to calculate stdv for
 ###
 exports.stdv = (array, key) ->
+  if typeof array[0] != 'number' and not key
+    throw new Error('No key parameter provided')
+
   arr = []
   if key
     arr = (a[key] for a in array)

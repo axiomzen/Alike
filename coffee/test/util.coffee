@@ -19,6 +19,12 @@ describe 'Standard Deviation', ->
   it 'should also accept objects with a key', ->
     utils.stdv([{ a: 600 },{ a: 470 },{ a: 170 },{ a: 430 },{ a: 300 }], 'a')
       .should.eql(147.32277488562318)
+  it 'should not accept objects without a key', ->
+    (->
+      utils.stdv([{ a: 600 },{ a: 470 },{ a: 170 },{ a: 430 },{ a: 300 }])
+    ).should.throwError 'No key parameter provided'
+    
+
 
 # describe.skip 'Standardize', ->
 #   it 'returns the array in units of stdv from mean', ->
