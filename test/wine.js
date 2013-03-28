@@ -7,8 +7,14 @@
   nearestNeighbor = require('../lib/main');
 
   describe('K Nearest Neighbor', function() {
+    var getLabels;
+    getLabels = function(results) {
+      return results.map(function(r) {
+        return r.label;
+      });
+    };
     describe('with basic wine testCase', function() {
-      var getLabels, options, profile1, profile2, profile3, testCase, wineList;
+      var options, profile1, profile2, profile3, testCase, wineList;
       testCase = require('./test_case_simple');
       wineList = testCase.wineList;
       profile1 = testCase.tasteProfile1;
@@ -16,11 +22,6 @@
       profile3 = testCase.tasteProfile3;
       options = {
         k: 3
-      };
-      getLabels = function(results) {
-        return results.map(function(r) {
-          return r.label;
-        });
       };
       it('should return the nearest neighbor', function() {
         nearestNeighbor(profile1, wineList)[0].label.should.eql('C');
@@ -39,7 +40,7 @@
       });
     });
     return describe('with testCase that requires standardized Euclidean distance', function() {
-      var getLabels, options, profile1, profile2, profile3, testCase, wineList;
+      var options, profile1, profile2, profile3, testCase, wineList;
       testCase = require('./test_case_standardize');
       wineList = testCase.wineList;
       profile1 = testCase.tasteProfile1;
@@ -48,11 +49,6 @@
       options = {
         k: 3,
         standardize: true
-      };
-      getLabels = function(results) {
-        return results.map(function(r) {
-          return r.label;
-        });
       };
       it('should return the nearest neighbor', function() {
         nearestNeighbor(profile1, wineList, options)[0].label.should.eql('C');

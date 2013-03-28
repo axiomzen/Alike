@@ -2,6 +2,9 @@ should = require 'should'
 nearestNeighbor = require '../lib/main'
 
 describe 'K Nearest Neighbor', ->
+  getLabels = (results) ->
+    results.map (r) ->
+      r.label
   describe 'with basic wine testCase', ->
     testCase = require './test_case_simple'
     wineList = testCase.wineList
@@ -9,9 +12,6 @@ describe 'K Nearest Neighbor', ->
     profile2 = testCase.tasteProfile2
     profile3 = testCase.tasteProfile3
     options = k: 3
-    getLabels = (results) ->
-      results.map (r) ->
-        r.label
 
     it 'should return the nearest neighbor', ->
       nearestNeighbor(profile1, wineList)[0].label.should.eql('C')
@@ -33,9 +33,6 @@ describe 'K Nearest Neighbor', ->
     profile2 = testCase.tasteProfile2
     profile3 = testCase.tasteProfile3
     options = k: 3, standardize: true
-    getLabels = (results) ->
-      results.map (r) ->
-        r.label
 
     it 'should return the nearest neighbor', ->
       nearestNeighbor(profile1, wineList, options)[0].label.should.eql('C')
