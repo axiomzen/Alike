@@ -38,7 +38,7 @@
         return getLabels(nearestNeighbor(profile3, wineList.slice(0, 2), options)).should.eql(['B', 'A']);
       });
     });
-    return describe.skip('with testCase that requires standardized Euclidean distance', function() {
+    return describe('with testCase that requires standardized Euclidean distance', function() {
       var getLabels, options, profile1, profile2, profile3, testCase, wineList;
       testCase = require('./test_case_standardize');
       wineList = testCase.wineList;
@@ -55,9 +55,9 @@
         });
       };
       it('should return the nearest neighbor', function() {
-        nearestNeighbor(profile1, wineList)[0].label.should.eql('C');
-        nearestNeighbor(profile2, wineList)[0].label.should.eql('E');
-        return nearestNeighbor(profile3, wineList)[0].label.should.eql('J');
+        nearestNeighbor(profile1, wineList, options)[0].label.should.eql('C');
+        nearestNeighbor(profile2, wineList, options)[0].label.should.eql('E');
+        return nearestNeighbor(profile3, wineList, options)[0].label.should.eql('J');
       });
       return it('should return 3 nearest neighbors, sorted by distance', function() {
         getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['C', 'H', 'A']);

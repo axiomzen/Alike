@@ -26,7 +26,7 @@ describe 'K Nearest Neighbor', ->
       getLabels(nearestNeighbor(profile2, wineList.slice(0, 2), options)).should.eql(['A', 'B'])
       getLabels(nearestNeighbor(profile3, wineList.slice(0, 2), options)).should.eql(['B', 'A'])
 
-  describe.skip 'with testCase that requires standardized Euclidean distance', ->
+  describe 'with testCase that requires standardized Euclidean distance', ->
     testCase = require './test_case_standardize'
     wineList = testCase.wineList
     profile1 = testCase.tasteProfile1
@@ -38,9 +38,9 @@ describe 'K Nearest Neighbor', ->
         r.label
 
     it 'should return the nearest neighbor', ->
-      nearestNeighbor(profile1, wineList)[0].label.should.eql('C')
-      nearestNeighbor(profile2, wineList)[0].label.should.eql('E')
-      nearestNeighbor(profile3, wineList)[0].label.should.eql('J')
+      nearestNeighbor(profile1, wineList, options)[0].label.should.eql('C')
+      nearestNeighbor(profile2, wineList, options)[0].label.should.eql('E')
+      nearestNeighbor(profile3, wineList, options)[0].label.should.eql('J')
     it 'should return 3 nearest neighbors, sorted by distance', ->
       getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['C', 'H', 'A'])
       getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'F', 'A']) #D,G,H tie

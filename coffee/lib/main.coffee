@@ -19,10 +19,15 @@ module.exports = (subject, objects, options) ->
       unless attr of o
         throw new Error("Missing attribute '#{attr}' in '#{JSON.stringify(o)}'")
 
+  # If standardize option is set to true, precalculate each attribute's stdv
+  stdv = {}
+  if options?.standardize?
+    stdv = util.allStdvs subject, objects
+
   # Calculate all object distances from subject and store index
   distances = for object, i in objects
     index: i
-    dist: util.distance(subject, object)
+    dist: util.distance(subject, object, {stdv: stdv})
 
   # Sort distances ascending
   sortMap = distances.sort (a,b) -> a.dist - b.dist
