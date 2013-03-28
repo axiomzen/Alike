@@ -1,3 +1,5 @@
+util = require './util'
+
 module.exports = (subject, objects, options) ->
   # Argument checks
   if arguments.length < 2
@@ -20,7 +22,7 @@ module.exports = (subject, objects, options) ->
   # Calculate all object distances from subject and store in object
   distances = for object, i in objects
     index: i
-    dist: distance(subject, object)
+    dist: util.distance(subject, object)
 
   # console.log subject, objects, distances
 
@@ -34,31 +36,3 @@ module.exports = (subject, objects, options) ->
   # Slice top k from sorted
   k = options?.k || 1
   sortedObjects.slice(0, k)
-
-
-
-# ---------- Util functions ---------
-
-### 
-  Euclidean distance function
-  ----------
-  Takes 2 objects, and returns squared Euclidean distance based on the first object's attributes
-  e.g. p1 = {a: 1} and p2 = {a: 2, b: 3, c: 5} will ignore extra attributes on p2 and return 1
-  All attributes on p1 MUST be present in p2 (otherwise will be inaccurate if ignored)
-###
-distance = (p1, p2) ->
-  dist = 0
-  for attr, val of p1
-    dist += Math.pow val - p2[attr], 2
-  dist
-
-###
-  Standard Deviation
-###
-stdv = (array) ->
-  sum = array.reduce (a,b) -> a + b
-  mean = sum / array.length
-  ssqdiff = 0
-  for x in array
-    ssqdiff += Math.pow( x - mean, 2)
-  Math.sqrt(ssqdiff / array.length)
