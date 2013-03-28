@@ -19,20 +19,18 @@ module.exports = (subject, objects, options) ->
       unless attr of o
         throw new Error("Missing attribute '#{attr}' in '#{JSON.stringify(o)}'")
 
-  # Calculate all object distances from subject and store in object
+  # Calculate all object distances from subject and store index
   distances = for object, i in objects
     index: i
     dist: util.distance(subject, object)
 
-  # console.log subject, objects, distances
-
   # Sort distances ascending
   sortMap = distances.sort (a,b) -> a.dist - b.dist
 
-  # Sort objects using sortMap
+  # Copy objects in sorted order using sortMap
   sortedObjects = for i in sortMap 
     objects[i.index]
 
-  # Slice top k from sorted
+  # Slice top k from sortedObjects
   k = options?.k || 1
   sortedObjects.slice(0, k)
