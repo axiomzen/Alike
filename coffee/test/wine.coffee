@@ -8,9 +8,17 @@ describe 'K Nearest Neighbor', ->
     profile1 = testCase.tasteProfile1
     profile2 = testCase.tasteProfile2
     profile3 = testCase.tasteProfile3
+    options = k: 3
+    getLabels = (results) ->
+      results.map (r) ->
+        r.label
+
     it 'should return the nearest neighbor', ->
       nearestNeighbor(profile1, wineList)[0].label.should.eql('C')
       nearestNeighbor(profile2, wineList)[0].label.should.eql('E')
       nearestNeighbor(profile3, wineList)[0].label.should.eql('J')
-    it 'should return 5 nearest neighbors, sorted by distance'
-    it 'should return all of Y sorted by distance if Y.length < 5'
+    it 'should return 3 nearest neighbors, sorted by distance', ->
+      getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['C', 'H', 'A'])
+      getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'F', 'A']) #D,G,H tie
+      getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['J', 'L', 'G'])
+    it 'should return all of Y sorted by distance if Y.length < 3'
