@@ -23,6 +23,11 @@ describe 'Standard Deviation', ->
     (->
       utils.stdv([{ a: 600 },{ a: 470 },{ a: 170 },{ a: 430 },{ a: 300 }])
     ).should.throwError 'No key parameter provided'
+
+describe 'Standard Deviations on data', ->
+  it 'should be able to construct an object describing each attribute\'s stdv', ->
+    utils.allStdvs({ a: 1, b: 3 }, [{ a: 1, b: 3 }, { a: 5, b: 5 }, { a: 9, b: 7 }])
+      .should.eql({ a: Math.sqrt(32/3), b: Math.sqrt(8/3) })
     
 describe 'Standardized Euclidean Distance function', ->
   it 'should accept 2 objects and the stdv for 1 dimension', ->

@@ -77,6 +77,29 @@
     });
   });
 
+  describe('Standard Deviations on data', function() {
+    return it('should be able to construct an object describing each attribute\'s stdv', function() {
+      return utils.allStdvs({
+        a: 1,
+        b: 3
+      }, [
+        {
+          a: 1,
+          b: 3
+        }, {
+          a: 5,
+          b: 5
+        }, {
+          a: 9,
+          b: 7
+        }
+      ]).should.eql({
+        a: Math.sqrt(32 / 3),
+        b: Math.sqrt(8 / 3)
+      });
+    });
+  });
+
   describe('Standardized Euclidean Distance function', function() {
     it('should accept 2 objects and the stdv for 1 dimension', function() {
       return utils.distance({

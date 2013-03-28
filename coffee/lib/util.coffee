@@ -46,6 +46,18 @@ exports.stdv = (array, key) ->
   Math.sqrt(ssqdiff / array.length)
 
 ###
+  Get all Standard Deviations
+  ----------
+  Given a subject and an array of objects, return an object describing each of subject's key's stdv on objects
+###
+exports.allStdvs = (subject, objects) ->
+  stdvs = {}
+  for attr of subject
+    stdvs[attr] = exports.stdv(objects, attr)
+  stdvs
+
+
+###
   Standardize objects
   ---
   Takes an array of objects with numerical attributes, and returns object with standardized values,
