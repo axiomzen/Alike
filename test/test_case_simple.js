@@ -2,7 +2,7 @@
 (function() {
   var chart, tasteProfile1, tasteProfile2, tasteProfile3, wineList;
 
-  chart = "    4 | x                 3 \n    3 |                x    \n    2 |    x     x        x \n    1 |       x             \n    0 | x     2x       x    \n    -1|                     \n    -2|    x     x          \n    -3|                x    \n    -4|_1___________________\n        1  2  3  4  5  6  7 ";
+  chart = "    4 | B                 3 \n    3 |                J    \n    2 |    D     G        L \n    1 |       F             \n    0 | A     E2       I    \n    -1|                     \n    -2|    C     H          \n    -3|                K    \n    -4|_1___________________\n        1  2  3  4  5  6  7 ";
 
   tasteProfile1 = {
     category: 1,
@@ -65,7 +65,7 @@
       category: 6,
       angularity: -3
     }, {
-      label: 'I',
+      label: 'L',
       category: 7,
       angularity: 2
     }
