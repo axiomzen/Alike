@@ -60,7 +60,7 @@
         getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'F', 'A']);
         return getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['J', 'L', 'G']);
       });
-      return describe.skip('and weights per attribute', function() {
+      return describe('and weights per attribute', function() {
         return it('should minimize category with 0.01 weight', function() {
           options = {
             k: 3,

@@ -6,6 +6,7 @@
   options:  options hash to specify:
         - k: (default = 1) specifies how many objects to return
         - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs
+        - weights: (default = {}) a hash describing the weights of each attribute
 ###
 
 util = require './util'
@@ -33,10 +34,15 @@ module.exports = (subject, objects, options) ->
   if options?.standardize?
     stdv = util.allStdvs subject, objects
 
+  # Set weights if provided
+  weights = {}
+  if options?.weights
+    weights = options.weights
+
   # Calculate all object distances from subject and store index
   distances = for object, i in objects
     index: i
-    dist: util.distance(subject, object, {stdv: stdv})
+    dist: util.distance(subject, object, {stdv: stdv, weights: weights})
 
   # Sort distances ascending
   sortMap = distances.sort (a,b) -> a.dist - b.dist

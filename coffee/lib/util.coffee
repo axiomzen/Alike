@@ -16,9 +16,14 @@ exports.distance = (p1, p2, opts) ->
     y = p2[attr]
 
     # Normalize if stdv values are passed in opts
-    if opts and Object.getOwnPropertyNames(opts.stdv).length > 0
+    if opts?.stdv and Object.getOwnPropertyNames(opts.stdv).length > 0
       x /= opts.stdv[attr]
       y /= opts.stdv[attr]
+
+    # Apply weight factor is provided
+    if opts?.weights and Object.getOwnPropertyNames(opts.weights).length > 0
+      x *= opts.weights[attr]
+      y *= opts.weights[attr]
 
     dist += Math.pow x - y, 2
   dist
