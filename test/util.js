@@ -40,14 +40,23 @@
     it('should be 0 with array of equal numbers', function() {
       return utils.stdv([1, 1, 1, 1, 1]).should.eql(0);
     });
-    return it('should calculate stdv given an array of numbers', function() {
+    it('should calculate stdv given an array of numbers', function() {
       return utils.stdv([600, 470, 170, 430, 300]).should.eql(147.32277488562318);
     });
-  });
-
-  describe('Standardize', function() {
-    return it('returns the array in units of stdv from mean', function() {
-      return utils.standardize([600, 470, 170, 430, 300]).should.eql([1.398290251863176, 0.5158740735029193, -1.5204709534822884, 0.24436140323822492, -0.6380547751220317]);
+    return it('should also accept objects with a key', function() {
+      return utils.stdv([
+        {
+          a: 600
+        }, {
+          a: 470
+        }, {
+          a: 170
+        }, {
+          a: 430
+        }, {
+          a: 300
+        }
+      ], 'a').should.eql(147.32277488562318);
     });
   });
 

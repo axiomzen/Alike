@@ -15,10 +15,16 @@ exports.distance = (p1, p2) ->
 ###
   Standard Deviation
 ###
-exports.stdv = (array) ->
-  m = mean(array)
+exports.stdv = (array, key) ->
+  arr = []
+  if key
+    arr = (a[key] for a in array)
+  else
+    arr = array
+
+  m = mean(arr)
   ssqdiff = 0
-  for x in array
+  for x in arr
     ssqdiff += Math.pow( x - m, 2)
   Math.sqrt(ssqdiff / array.length)
 

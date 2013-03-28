@@ -16,13 +16,16 @@ describe 'Standard Deviation', ->
   it 'should calculate stdv given an array of numbers', ->
     utils.stdv([600, 470, 170, 430, 300])
       .should.eql(147.32277488562318)
+  it 'should also accept objects with a key', ->
+    utils.stdv([{ a: 600 },{ a: 470 },{ a: 170 },{ a: 430 },{ a: 300 }], 'a')
+      .should.eql(147.32277488562318)
 
-describe 'Standardize', ->
-  it 'returns the array in units of stdv from mean', ->
-    utils.standardize([600, 470, 170, 430, 300])
-      .should.eql(
-        [ 1.398290251863176
-        0.5158740735029193
-        -1.5204709534822884
-        0.24436140323822492
-        -0.6380547751220317 ])
+# describe.skip 'Standardize', ->
+#   it 'returns the array in units of stdv from mean', ->
+#     utils.standardize([a: 600, a: 470, a: 170, a: 430, a: 300])
+#       .should.eql([
+#         a: 1.398290251863176
+#         a: 0.5158740735029193
+#         a: -1.5204709534822884
+#         a: 0.24436140323822492
+#         a: -0.6380547751220317 ])

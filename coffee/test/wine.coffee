@@ -45,7 +45,3 @@ describe 'K Nearest Neighbor', ->
       getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['C', 'H', 'A'])
       getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'F', 'A']) #D,G,H tie
       getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['J', 'L', 'G'])
-    it 'should return all of Y sorted by distance if Y.length < 3', ->
-      getLabels(nearestNeighbor(profile1, wineList.slice(0, 2), options)).should.eql(['A', 'B'])
-      getLabels(nearestNeighbor(profile2, wineList.slice(0, 2), options)).should.eql(['A', 'B'])
-      getLabels(nearestNeighbor(profile3, wineList.slice(0, 2), options)).should.eql(['B', 'A'])
