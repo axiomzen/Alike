@@ -119,7 +119,7 @@
     return describe('with basic wine testCase', function() {
       beforeEach(function() {
         var testCase;
-        return testCase = require('./test_case');
+        return testCase = require('./test_case_simple');
       });
       it('should return the nearest neighbor');
       it('should return 5 nearest neighbors, sorted by distance');
