@@ -55,10 +55,25 @@
         nearestNeighbor(profile2, wineList, options)[0].label.should.eql('E');
         return nearestNeighbor(profile3, wineList, options)[0].label.should.eql('J');
       });
-      return it('should return 3 nearest neighbors, sorted by distance', function() {
+      it('should return 3 nearest neighbors, sorted by distance', function() {
         getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['C', 'H', 'A']);
         getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'F', 'A']);
         return getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['J', 'L', 'G']);
+      });
+      return describe.skip('and weights per attribute', function() {
+        return it('should minimize category with 0.01 weight', function() {
+          options = {
+            k: 3,
+            standardize: true,
+            weights: {
+              category: 0.01,
+              angularity: 0.99
+            }
+          };
+          getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['K', 'C', 'H']);
+          getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'A', 'I']);
+          return getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['B', 'J', 'L']);
+        });
       });
     });
   });

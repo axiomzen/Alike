@@ -42,3 +42,10 @@ describe 'K Nearest Neighbor', ->
       getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['C', 'H', 'A'])
       getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'F', 'A']) #D,G,H tie
       getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['J', 'L', 'G'])
+
+    describe.skip 'and weights per attribute', ->
+      it 'should minimize category with 0.01 weight', ->
+        options = k:3, standardize: true, weights: { category: 0.01, angularity: 0.99 }
+        getLabels(nearestNeighbor(profile1, wineList, options)).should.eql(['K', 'C', 'H'])
+        getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'A', 'I']) #D,G,H tie
+        getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['B', 'J', 'L'])

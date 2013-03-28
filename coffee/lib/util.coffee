@@ -17,8 +17,8 @@ exports.distance = (p1, p2, opts) ->
 
     # Normalize if stdv values are passed in opts
     if opts and Object.getOwnPropertyNames(opts.stdv).length > 0
-      x = x / opts.stdv[attr]
-      y = y / opts.stdv[attr]
+      x /= opts.stdv[attr]
+      y /= opts.stdv[attr]
 
     dist += Math.pow x - y, 2
   dist
