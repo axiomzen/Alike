@@ -1,5 +1,14 @@
-util = require './util'
+###
+  k-Nearest Neigbor library
+  -------
+  subject:  vantage point object -- will consider each attribute present in this object
+  objects:  array of objects that should all have at least the attributes of subject
+  options:  options hash to specify:
+        - k: (default = 1) specifies how many objects to return
+        - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs
+###
 
+util = require './util'
 module.exports = (subject, objects, options) ->
   # Argument checks
   if arguments.length < 2
