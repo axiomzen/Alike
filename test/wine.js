@@ -32,7 +32,11 @@
         getLabels(nearestNeighbor(profile2, wineList, options)).should.eql(['E', 'F', 'A']);
         return getLabels(nearestNeighbor(profile3, wineList, options)).should.eql(['J', 'L', 'G']);
       });
-      return it('should return all of Y sorted by distance if Y.length < 3');
+      return it('should return all of Y sorted by distance if Y.length < 3', function() {
+        getLabels(nearestNeighbor(profile1, wineList.slice(0, 2), options)).should.eql(['A', 'B']);
+        getLabels(nearestNeighbor(profile2, wineList.slice(0, 2), options)).should.eql(['A', 'B']);
+        return getLabels(nearestNeighbor(profile3, wineList.slice(0, 2), options)).should.eql(['B', 'A']);
+      });
     });
   });
 
