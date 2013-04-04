@@ -94,7 +94,7 @@
           }
         ]);
       });
-      return it('should return 2 nearest neighbors (in order) with single dimension', function() {
+      it('should return 2 nearest neighbors (in order) with single dimension', function() {
         return nearestNeighbor({
           a: 1
         }, [
@@ -112,6 +112,29 @@
             a: 1
           }, {
             a: 0
+          }
+        ]);
+      });
+      return it('should accept a key parameter for objects', function() {
+        return nearestNeighbor({
+          a: 1
+        }, [
+          {
+            x: {
+              a: 1
+            }
+          }, {
+            x: {
+              a: 2
+            }
+          }
+        ], {
+          key: 'x'
+        }).should.eql([
+          {
+            x: {
+              a: 1
+            }
           }
         ]);
       });

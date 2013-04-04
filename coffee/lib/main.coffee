@@ -7,6 +7,8 @@
         - k: (default = 1) specifies how many objects to return
         - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs
         - weights: (default = {}) a hash describing the weights of each attribute
+        - key: (default none) a key parameter to map over objects, to be used if the subject attributes are nested within key.
+              e.g. if subject is {a:0} and objects are [{x: {a: 0}},{x: {a: 2}}], then provide key: 'x'
 ###
 
 util = require './util'
@@ -21,18 +23,22 @@ module.exports = (subject, objects, options) ->
   unless Array.isArray(arguments[1])
     throw new Error('Expecting an array as second argument')  
 
-  unless objects.length
+  # If key is provided in options hash, map over objects with key parameter
+  objects_mapped = objects
+  objects_mapped = (obj[options.key] for obj in objects) if options?.key?
+
+  unless objects_mapped.length
     return []
 
   for attr of subject
-    for o in objects
+    for o in objects_mapped
       unless attr of o
         throw new Error("Missing attribute '#{attr}' in '#{JSON.stringify(o)}'")
 
   # If standardize option is set to true, precalculate each attribute's stdv
   stdv = {}
   if options?.standardize?
-    stdv = util.allStdvs subject, objects
+    stdv = util.allStdvs subject, objects_mapped
 
   # Set weights if provided
   weights = {}
@@ -40,7 +46,7 @@ module.exports = (subject, objects, options) ->
     weights = options.weights
 
   # Calculate all object distances from subject and store index
-  distances = for object, i in objects
+  distances = for object, i in objects_mapped
     index: i
     dist: util.distance(subject, object, {stdv: stdv, weights: weights})
 
