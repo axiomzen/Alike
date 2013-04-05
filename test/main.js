@@ -129,7 +129,9 @@
             }
           }
         ], {
-          key: ['x']
+          key: function(o) {
+            return o.x;
+          }
         }).should.eql([
           {
             x: {
@@ -156,7 +158,9 @@
             }
           }
         ], {
-          key: ['x', 'y']
+          key: function(o) {
+            return o.x.y;
+          }
         }).should.eql([
           {
             x: {
