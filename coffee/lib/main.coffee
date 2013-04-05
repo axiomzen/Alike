@@ -7,8 +7,8 @@
         - k: (default = 1) specifies how many objects to return
         - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs
         - weights: (default = {}) a hash describing the weights of each attribute
-        - key: (default none) a key parameter to map over objects, to be used if the subject attributes are nested within key.
-              e.g. if subject is {a:0} and objects are [{x: {a: 0}},{x: {a: 2}}], then provide key: 'x'
+        - key: (default none) an array key parameter to map over objects, to be used if the subject attributes are nested within key.
+              e.g. if subject is {a:0} and objects are [{x: {a: 0}},{x: {a: 2}}], then provide key: ['x']. Use ['x', 'y'] if the object were nested even more.
 ###
 
 util = require './util'
@@ -25,7 +25,9 @@ module.exports = (subject, objects, options) ->
 
   # If key is provided in options hash, map over objects with key parameter
   objects_mapped = objects
-  objects_mapped = (obj[options.key] for obj in objects) if options?.key?
+  if options?.key?
+    for k in options.key
+      objects_mapped = (obj[k] for obj in objects_mapped)
 
   unless objects_mapped.length
     return []

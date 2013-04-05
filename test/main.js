@@ -115,7 +115,7 @@
           }
         ]);
       });
-      return it('should accept a key parameter for objects', function() {
+      it('should accept a key parameter for objects', function() {
         return nearestNeighbor({
           a: 1
         }, [
@@ -129,11 +129,40 @@
             }
           }
         ], {
-          key: 'x'
+          key: ['x']
         }).should.eql([
           {
             x: {
               a: 1
+            }
+          }
+        ]);
+      });
+      return it('should accept a key parameter for nested objects', function() {
+        return nearestNeighbor({
+          a: 1
+        }, [
+          {
+            x: {
+              y: {
+                a: 1
+              }
+            }
+          }, {
+            x: {
+              y: {
+                a: 2
+              }
+            }
+          }
+        ], {
+          key: ['x', 'y']
+        }).should.eql([
+          {
+            x: {
+              y: {
+                a: 1
+              }
             }
           }
         ]);
