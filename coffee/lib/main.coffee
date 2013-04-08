@@ -28,12 +28,14 @@ module.exports = (subject, objects, options) ->
   objects_mapped = objects
 
   # If filter is provided in options hash, apply it first to objects
+  objects_filtered = objects
   if options?.filter?
-    objects_mapped = (obj for obj in objects when options.filter(obj))
+    objects_filtered = (obj for obj in objects when options.filter(obj))
 
   # If key is provided in options hash, map over objects with key parameter
+  objects_mapped = objects_filtered
   if options?.key?
-    objects_mapped = (options.key(obj) for obj in objects_mapped)    
+    objects_mapped = (options.key(obj) for obj in objects_filtered)
 
   unless objects_mapped.length
     return []
@@ -63,7 +65,7 @@ module.exports = (subject, objects, options) ->
 
   # Copy objects in sorted order using sortMap
   sortedObjects = for i in sortMap 
-    objects[i.index]
+    objects_filtered[i.index]
 
   # Slice top k from sortedObjects
   k = options?.k || 1
