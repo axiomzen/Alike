@@ -171,7 +171,7 @@
           }
         ]);
       });
-      return it('should accept filter parameter', function() {
+      it('should accept filter parameter', function() {
         return nearestNeighbor({
           a: 1
         }, [
@@ -194,6 +194,24 @@
             a: 3
           }
         ]);
+      });
+      return it('should accept return empty array if filters all', function() {
+        return nearestNeighbor({
+          a: 1
+        }, [
+          {
+            a: 1
+          }, {
+            a: 3
+          }, {
+            a: 0
+          }
+        ], {
+          k: 2,
+          filter: function(o) {
+            return o.a > 10;
+          }
+        }).should.eql([]);
       });
     });
   });

@@ -52,3 +52,5 @@ describe 'K Nearest Neighbor', ->
       nearestNeighbor({a:1}, [{x: {y: {a:1}}}, {x: {y: {a:2}}}], {key: (o) -> o.x.y}).should.eql([{x: {y: {a:1}}}])
     it 'should accept filter parameter', ->
       nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2, filter: (o) -> o.a > 0}).should.eql([{a:1}, {a:3}])
+    it 'should accept return empty array if filters all', ->
+      nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2, filter: (o) -> o.a > 10}).should.eql([])
