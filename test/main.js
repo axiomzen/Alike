@@ -140,7 +140,7 @@
           }
         ]);
       });
-      return it('should accept a key parameter for nested objects', function() {
+      it('should accept a key parameter for nested objects', function() {
         return nearestNeighbor({
           a: 1
         }, [
@@ -168,6 +168,30 @@
                 a: 1
               }
             }
+          }
+        ]);
+      });
+      return it('should accept filter parameter', function() {
+        return nearestNeighbor({
+          a: 1
+        }, [
+          {
+            a: 1
+          }, {
+            a: 3
+          }, {
+            a: 0
+          }
+        ], {
+          k: 2,
+          filter: function(o) {
+            return o.a > 0;
+          }
+        }).should.eql([
+          {
+            a: 1
+          }, {
+            a: 3
           }
         ]);
       });
