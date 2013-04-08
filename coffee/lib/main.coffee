@@ -9,6 +9,8 @@
         - weights: (default = {}) a hash describing the weights of each attribute
         - key: (default none) a key function to map over objects, to be used if the subject attributes are nested within key.
               e.g. if subject is {a:0} and objects are [{x: {a: 0}},{x: {a: 2}}], then provide key: function(o) {return o.x}.
+        - filter: (default none) a filter function that returns true for items to be considered 
+              e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
 ###
 
 util = require './util'
@@ -23,10 +25,15 @@ module.exports = (subject, objects, options) ->
   unless Array.isArray(arguments[1])
     throw new Error('Expecting an array as second argument')  
 
-  # If key is provided in options hash, map over objects with key parameter
   objects_mapped = objects
+
+  # If filter is provided in options hash, apply it first to objects
+  if options?.filter?
+    objects_mapped = (obj for obj in objects when options.filter(obj))
+
+  # If key is provided in options hash, map over objects with key parameter
   if options?.key?
-    objects_mapped = (options.key(obj) for obj in objects_mapped)
+    objects_mapped = (options.key(obj) for obj in objects_mapped)    
 
   unless objects_mapped.length
     return []
