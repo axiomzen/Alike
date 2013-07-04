@@ -23,10 +23,11 @@
     "object comparison"
   ],
   "readmeFilename": "README.md",
+  "homepage": "https://github.com/axiomzen/Alike",
   "repository": {
     "type": "git",
-    "url": "https://github.com/axiomzen/kNN"
+    "url": "https://github.com/axiomzen/Alike"
   },
-  "bugs": "https://github.com/axiomzen/kNN/issues",
+  "bugs": "https://github.com/axiomzen/Alike/issues",
   "license": "MIT"
 }
