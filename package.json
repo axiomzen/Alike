@@ -1,7 +1,7 @@
 {
-  "name": "kNN",
-  "version": "0.0.1",
-  "description": "A kNN library, comparing JS Objects using Euclidean distances, returning top k similar objects",
+  "name": "az-knn",
+  "version": "0.1.0",
+  "description": "A simple kNN library for Machine Learning, comparing JSON objects using Euclidean distances, returning top k similar objects -- supports normalization, weights, key and filter parameters",
   "main": "lib/main.js",
   "devDependencies": {
     "mocha": "1.8.1",
@@ -13,5 +13,19 @@
   "scripts": {
     "test": "mocha test/*.js"
   },
-  "readmeFilename": "README.md"
+  "author": "mck- <kuomarc2@gmail.com>",
+  "keywords": [
+    "knn",
+    "Machine Learning",
+    "recommender system",
+    "euclidean distances",
+    "object comparison"
+  ],
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axiomzen/kNN"
+  },
+  "bugs": "https://github.com/axiomzen/kNN/issues",
+  "license": "MIT"
 }

@@ -1,15 +1,15 @@
 ###
   k-Nearest Neigbor library
   -------
-  subject:  vantage point object -- will consider each attribute present in this object
+  subject:  vantage point object -- will consider each attribute present in this object as a feature
   objects:  array of objects that should all have at least the attributes of subject
   options:  options hash to specify:
         - k: (default = 1) specifies how many objects to return
-        - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs
+        - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs. Set this to true if your attributes do not have the same scale.
         - weights: (default = {}) a hash describing the weights of each attribute
         - key: (default none) a key function to map over objects, to be used if the subject attributes are nested within key.
               e.g. if subject is {a:0} and objects are [{x: {a: 0}},{x: {a: 2}}], then provide key: function(o) {return o.x}.
-        - filter: (default none) a filter function that returns true for items to be considered 
+        - filter: (default none) a filter function that returns true for items to be considered
               e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
 ###
 
@@ -23,7 +23,7 @@ module.exports = (subject, objects, options) ->
     throw new Error('Expecting object arguments')
 
   unless Array.isArray(arguments[1])
-    throw new Error('Expecting an array as second argument')  
+    throw new Error('Expecting an array as second argument')
 
   objects_mapped = objects
 
@@ -64,7 +64,7 @@ module.exports = (subject, objects, options) ->
   sortMap = distances.sort (a,b) -> a.dist - b.dist
 
   # Copy objects in sorted order using sortMap
-  sortedObjects = for i in sortMap 
+  sortedObjects = for i in sortMap
     objects_filtered[i.index]
 
   # Slice top k from sortedObjects

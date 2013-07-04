@@ -1,4 +1,4 @@
-## Test case considering only category and angularity, no normalization
+## Test case considering only two attriubutes, no normalization
 
 ## Chart
 chart = "
@@ -13,73 +13,73 @@ chart = "
     -4|_1___________________\n
         1  2  3  4  5  6  7 "
 
-## Taste profiles
-tasteProfile1 = 
-  category: 1
-  angularity: -4
+## Test Subjects
+subject1 =
+  attr_a: 1
+  attr_b: -4
 
-tasteProfile2 = 
-  category: 3
-  angularity: 0
+subject2 =
+  attr_a: 3
+  attr_b: 0
 
-tasteProfile3 = 
-  category: 7
-  angularity: 4
+subject3 =
+  attr_a: 7
+  attr_b: 4
 
-## Wine list
-wineList = [
+## Objects
+objects = [
     label: 'A'
-    category: 1
-    angularity: 0
+    attr_a: 1
+    attr_b: 0
   ,
     label: 'B'
-    category: 1
-    angularity: 4
+    attr_a: 1
+    attr_b: 4
   ,
     label: 'C'
-    category: 2
-    angularity: -2
+    attr_a: 2
+    attr_b: -2
   ,
     label: 'D'
-    category: 2
-    angularity: 2
+    attr_a: 2
+    attr_b: 2
   ,
     label: 'E'
-    category: 3
-    angularity: 0
+    attr_a: 3
+    attr_b: 0
   ,
     label: 'F'
-    category: 3
-    angularity: 1
+    attr_a: 3
+    attr_b: 1
   ,
     label: 'G'
-    category: 4
-    angularity: 2
+    attr_a: 4
+    attr_b: 2
   ,
     label: 'H'
-    category: 4
-    angularity: -2
-  ,    
+    attr_a: 4
+    attr_b: -2
+  ,
     label: 'I'
-    category: 6
-    angularity: 0
-  ,    
+    attr_a: 6
+    attr_b: 0
+  ,
     label: 'J'
-    category: 6
-    angularity: 3
-  ,    
+    attr_a: 6
+    attr_b: 3
+  ,
     label: 'K'
-    category: 6
-    angularity: -3
-  ,    
+    attr_a: 6
+    attr_b: -3
+  ,
     label: 'L'
-    category: 7
-    angularity: 2
+    attr_a: 7
+    attr_b: 2
 ]
 
 module.exports =
-  tasteProfile1: tasteProfile1
-  tasteProfile2: tasteProfile2
-  tasteProfile3: tasteProfile3
-  wineList: wineList
+  subject1: subject1
+  subject2: subject2
+  subject3: subject3
+  objects: objects
   chart: chart

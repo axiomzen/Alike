@@ -13,73 +13,73 @@ chart = "
    -40 |_1___________________\n
         1  2  3  4  5  6  7 "
 
-## Taste profiles
-tasteProfile1 = 
-  category: 1
-  angularity: -40
+## Subjects
+subject1 =
+  attr_1: 1
+  attr_2: -40
 
-tasteProfile2 = 
-  category: 3
-  angularity: 0
+subject2 =
+  attr_1: 3
+  attr_2: 0
 
-tasteProfile3 = 
-  category: 7
-  angularity: 40
+subject3 =
+  attr_1: 7
+  attr_2: 40
 
-## Wine list
-wineList = [
+## Objects
+objects = [
     label: 'A'
-    category: 1
-    angularity: 0
+    attr_1: 1
+    attr_2: 0
   ,
     label: 'B'
-    category: 1
-    angularity: 40
+    attr_1: 1
+    attr_2: 40
   ,
     label: 'C'
-    category: 2
-    angularity: -20
+    attr_1: 2
+    attr_2: -20
   ,
     label: 'D'
-    category: 2
-    angularity: 20
+    attr_1: 2
+    attr_2: 20
   ,
     label: 'E'
-    category: 3
-    angularity: 0
+    attr_1: 3
+    attr_2: 0
   ,
     label: 'F'
-    category: 3
-    angularity: 10
+    attr_1: 3
+    attr_2: 10
   ,
     label: 'G'
-    category: 4
-    angularity: 20
+    attr_1: 4
+    attr_2: 20
   ,
     label: 'H'
-    category: 4
-    angularity: -20
-  ,    
+    attr_1: 4
+    attr_2: -20
+  ,
     label: 'I'
-    category: 6
-    angularity: 0
-  ,    
+    attr_1: 6
+    attr_2: 0
+  ,
     label: 'J'
-    category: 6
-    angularity: 30
-  ,    
+    attr_1: 6
+    attr_2: 30
+  ,
     label: 'K'
-    category: 6
-    angularity: -30
-  ,    
+    attr_1: 6
+    attr_2: -30
+  ,
     label: 'L'
-    category: 7
-    angularity: 20
+    attr_1: 7
+    attr_2: 20
 ]
 
 module.exports =
-  tasteProfile1: tasteProfile1
-  tasteProfile2: tasteProfile2
-  tasteProfile3: tasteProfile3
-  wineList: wineList
+  subject1: subject1
+  subject2: subject2
+  subject3: subject3
+  objects: objects
   chart: chart
