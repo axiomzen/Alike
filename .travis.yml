@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "0.11"
+  - "0.10"
+  - "0.8"
+  - "0.6"
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    recipients:
+      - marc@axiomzen.co
+    on_success: change
+    on_failure: always
