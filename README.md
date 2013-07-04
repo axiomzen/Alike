@@ -1,5 +1,6 @@
 Alike
 =============
+[![Build Status](https://travis-ci.org/axiomzen/Alike.png?branch=master)](https://travis-ci.org/axiomzen/Alike)
 
 A simple-but-useful kNN library for NodeJS, comparing JSON Objects using Euclidean distances, returning top k closest objects.
 
