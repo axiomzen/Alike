@@ -96,3 +96,7 @@ Where `movies` is an array of objects that have at least those 5 attributes. Ret
 ## Development
 
 Alike is written in CoffeeScript in the `coffee/` folder. You may use `make coffee` to compile and watch for changes. Unit tests are in the `coffee/test/` folder. You can run the tests with `npm test` or if you were developing, you may use `make watch-test` to watch while you TDD :)
+
+## License
+
+Alike is licensed under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html), known as the LGPL.
