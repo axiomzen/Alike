@@ -8,20 +8,18 @@ Supports Normalized Weighted Euclidean distances. Normalize attributes by Standa
 
 Features `key` and `filter` attributes to do the data assembly for you, Lisp style!
 
-Using simple sorting and selecting top k items (k nlogn).
-
-## k-Nearest Neigbor function
+## k-Nearest Neighbour function
 ```
-  subject:  vantage point object -- will consider each attribute present in this object as a feature
-  objects:  array of objects that should all have at least the attributes of subject
-  options:  options hash to specify:
-        - k: (default = unlimited) specifies how many objects to return
-        - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs. Set this to true if your attributes do not have the same scale.
-        - weights: (default = {}) a hash describing the weights of each attribute
-        - key: (default none) a key function to map over objects, to be used if the subject attributes are nested within key.
-              e.g. if subject is {a:0} and objects are [{x: {a: 0}},{x: {a: 2}}], then provide key: function(o) {return o.x}.
-        - filter: (default none) a filter function that returns true for items to be considered
-              e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
+subject:  vantage point object - will consider each attribute present in this object as a feature
+objects:  array of objects that should all have at least the attributes of subject
+options:
+    - k: (default = unlimited) specifies how many objects to return
+    - standardize: (default = false) if true, will apply standardization across all attributes using stdvs - set this to true if your attributes do not have the same scale
+    - weights: (default = {}) a hash describing the weights of each attribute
+    - key: (default = none) a key function to map over objects, to be used if the subject attributes are nested within key
+        e.g. if subject is {a:0} and objects are [{x: {a: 0}}, {x: {a: 2}}], then provide key: function(o) {return o.x}
+    - filter: (default = none) a filter function that returns true for items to be considered
+        e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
 ```
 ## Example usage
 
@@ -72,19 +70,19 @@ knn = require('alike');
 options = {
   k: 10,
   weights: {
-             explosions: 0.1,
-             romance: 0.3,
-             length: 0.05,
-             humor: 0.05,
-             pigeons: 0.5
-           }
+    explosions: 0.1,
+    romance: 0.3,
+    length: 0.05,
+    humour: 0.05,
+    pigeons: 0.5
+  }
 }
 
 movieTaste = {
   explosions: 8,
   romance: 3,
   length: 5,
-  humor: 6,
+  humour: 6,
   pigeons: 10
 }
 
@@ -95,7 +93,7 @@ Where `movies` is an array of objects that have at least those 5 attributes. Ret
 
 ## Development
 
-Alike is written in CoffeeScript in the `coffee/` folder. You may use `make coffee` to compile and watch for changes. Unit tests are in the `coffee/test/` folder. You can run the tests with `npm test` or if you were developing, you may use `make watch-test` to watch while you TDD :)
+Alike is written in CoffeeScript in the `coffee/` folder. You may use `make coffee` to compile and watch for changes. Unit tests are in the `coffee/test/` folder. You can run the tests with `npm test` or if you are developing, you may use `make watch-test` to watch while you TDD. :)
 
 ## License
 
