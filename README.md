@@ -15,7 +15,7 @@ Using simple sorting and selecting top k items (k nlogn).
   subject:  vantage point object -- will consider each attribute present in this object as a feature
   objects:  array of objects that should all have at least the attributes of subject
   options:  options hash to specify:
-        - k: (default = 1) specifies how many objects to return
+        - k: (default = unlimited) specifies how many objects to return
         - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs. Set this to true if your attributes do not have the same scale.
         - weights: (default = {}) a hash describing the weights of each attribute
         - key: (default none) a key function to map over objects, to be used if the subject attributes are nested within key.

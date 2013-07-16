@@ -43,14 +43,16 @@ describe 'K Nearest Neighbor', ->
     it 'should return an empty object/array if no Y', ->
       nearestNeighbor({a:1}, []).should.eql([])
     it 'should return nearest neighbor with single dimension', ->
-      nearestNeighbor({a:1}, [{a:1}, {a:2}]).should.eql([{a:1}])
+      nearestNeighbor({a:1}, [{a:1}, {a:2}], {k:1}).should.eql([{a:1}])
     it 'should return 2 nearest neighbors (in order) with single dimension', ->
       nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2}).should.eql([{a:1}, {a:0}])
     it 'should accept a key parameter for objects', ->
-      nearestNeighbor({a:1}, [{x: {a:1}}, {x: {a:2}}], {key: (o) -> o.x}).should.eql([{x: {a:1}}])
-    it 'should accept a key parameter for nested objects', ->    
-      nearestNeighbor({a:1}, [{x: {y: {a:1}}}, {x: {y: {a:2}}}], {key: (o) -> o.x.y}).should.eql([{x: {y: {a:1}}}])
+      nearestNeighbor({a:1}, [{x: {a:1}}, {x: {a:2}}], {k: 1, key: (o) -> o.x}).should.eql([{x: {a:1}}])
+    it 'should accept a key parameter for nested objects', ->
+      nearestNeighbor({a:1}, [{x: {y: {a:1}}}, {x: {y: {a:2}}}], {k: 1, key: (o) -> o.x.y}).should.eql([{x: {y: {a:1}}}])
     it 'should accept filter parameter', ->
       nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2, filter: (o) -> o.a > 0}).should.eql([{a:1}, {a:3}])
     it 'should accept return empty array if filters all', ->
       nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2, filter: (o) -> o.a > 10}).should.eql([])
+    it 'should default to unlimited if no k is provided', ->
+      nearestNeighbor({a:1}, [{a:1}, {a:2}, {a:3}]).should.eql([{a:1}, {a:2}, {a:3}])
