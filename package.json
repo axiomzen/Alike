@@ -1,6 +1,6 @@
 {
   "name": "alike",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A simple kNN library for Machine Learning, comparing JSON objects using Euclidean distances, returning top k similar objects -- supports normalization, weights, key and filter parameters",
   "main": "lib/main.js",
   "devDependencies": {
