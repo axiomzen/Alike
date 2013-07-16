@@ -1,16 +1,16 @@
 ###
-  k-Nearest Neigbor library
+  k-Nearest Neighbour library
   -------
-  subject:  vantage point object -- will consider each attribute present in this object as a feature
+  subject:  vantage point object - will consider each attribute present in this object as a feature
   objects:  array of objects that should all have at least the attributes of subject
-  options:  options hash to specify:
-        - k: (default = unlimited) specifies how many objects to return
-        - standardize: (default = false) if true, will apply standardization accross all attributes using stdvs. Set this to true if your attributes do not have the same scale.
-        - weights: (default = {}) a hash describing the weights of each attribute
-        - key: (default none) a key function to map over objects, to be used if the subject attributes are nested within key.
-              e.g. if subject is {a:0} and objects are [{x: {a: 0}},{x: {a: 2}}], then provide key: function(o) {return o.x}.
-        - filter: (default none) a filter function that returns true for items to be considered
-              e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
+  options:
+      - k: (default = unlimited) specifies how many objects to return
+      - standardize: (default = false) if true, will apply standardization across all attributes using stdvs - set this to true if your attributes do not have the same scale
+      - weights: (default = {}) a hash describing the weights of each attribute
+      - key: (default = none) a key function to map over objects, to be used if the subject attributes are nested within key
+          e.g. if subject is {a:0} and objects are [{x: {a: 0}}, {x: {a: 2}}], then provide key: function(o) {return o.x}
+      - filter: (default = none) a filter function that returns true for items to be considered
+          e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
 ###
 
 util = require './util'
