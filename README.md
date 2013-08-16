@@ -99,6 +99,11 @@ Alike is written in CoffeeScript in the `coffee/` folder. You may use `make coff
 
 We tried being consistent and flexible on benchmarks.  
 Run it with `coffee benchmark/` takes ~ 280s in a simple Macbook Air  
+
+```
+100 x 5 avg:0.001 ops/s:954.9 score:0.5
+
+
 **suggestions TODO**: include score array calculation to check the rate of time growth, seems to be slightly better than linear for unchanged sets. Test some sets with some of the options. Test with sets that change all the time
 
 ## License

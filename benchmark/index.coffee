@@ -1,4 +1,5 @@
 Benchmark = require('benchmark')
+Table = require('cli-table');
 
 helper = require './helper'
 nearestNeighbor = require '../lib/main'
@@ -32,7 +33,13 @@ log 'running suite...'
 run = (cb) ->
   suite = new Benchmark.Suite
 
-  rates = []
+  ratesVector = []
+  baseRate = null
+
+  table = new Table({
+    head: ['rows', 'dimension', "exec time", 'problem increase', 'time increase' ]
+    # colWidths: [150, 100, 100, 200, 200 ]
+  })
 
   suite
    .add("100 x 5", ->
@@ -49,8 +56,8 @@ run = (cb) ->
   ).add("10000 x 100", ->
     nearestNeighbor(set10000x100[0], set10000x100 )
 
-  ).add("1000000 x 10", ->
-    nearestNeighbor(set1000000x10[0], set1000000x10 )
+  # ).add("1000000 x 10", ->
+  #   nearestNeighbor(set1000000x10[0], set1000000x10 )
 
   ).on("cycle", (e) ->
     # default #log e.target.toString()
@@ -58,12 +65,22 @@ run = (cb) ->
     stats = e.target.stats
     length = parseInt(name.split(' x ')[0])
     dimension = parseInt(name.split(' x ')[1])
-    score = score = (length*dimension)/e.target.hz
-    log "#{name} avg:#{stats.mean.toFixed(3)} ops/s:#{e.target.hz.toFixed(1)}" # ±#{stats.mean.toFixed(2)}% (seems irrelevant)
-    rates.push [stats.mean, (length*dimension)]
+    rateVector = [stats.mean, (length*dimension)]
+    ratesVector.push rateVector
+    comparison = ""
+    if baseRate
+      timeGrowth = (rateVector[0] / baseRate[0]).toFixed(1) + 'x'
+      problemGrowth = (rateVector[1] / baseRate[1]).toFixed(1) + 'x'
+      comparison = " - problem grew by #{problemGrowth} time by #{timeGrowth}"
+    else
+      baseRate = rateVector
+      timeGrowth = "1.0x"
+      problemGrowth = "1.0x"
+      comparison = " - problem base #{problemGrowth} time base #{timeGrowth}"
+    log "  #{name} execution time: #{stats.mean.toFixed(3)}s (#{e.target.hz.toFixed(1)} ops/s) #{comparison}" # ±#{stats.mean.toFixed(2)}% (seems irrelevant)
+    table.push [length, dimension, stats.mean.toFixed(3), problemGrowth, timeGrowth ]
   ).on("complete", ->
-    # log "Fastest is " + @filter("fastest").pluck("name")
-    log rates
+    log table.toString()
     t3 = new Date()
     log "  all done! #{parseInt((t3 - t1)/1000)}s"
   ).run {async: false}
