@@ -95,6 +95,12 @@ Where `movies` is an array of objects that have at least those 5 attributes. Ret
 
 Alike is written in CoffeeScript in the `coffee/` folder. You may use `make coffee` to compile and watch for changes. Unit tests are in the `coffee/test/` folder. You can run the tests with `npm test` or if you are developing, you may use `make watch-test` to watch while you TDD. :)
 
+## Benchmarks
+
+We tried being consistent and flexible on benchmarks.  
+Run it with `coffee benchmark/` takes ~ 280s in a simple Macbook Air  
+**suggestions TODO**: include score array calculation to check the rate of time growth, seems to be slightly better than linear for unchanged sets. Test some sets with some of the options. Test with sets that change all the time
+
 ## License
 
 Alike is licensed under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html), known as the LGPL.

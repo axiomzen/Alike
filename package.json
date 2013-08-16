@@ -6,7 +6,10 @@
   "devDependencies": {
     "mocha": "1.8.1",
     "should": "1.2.1",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "benchmark": "1.0.x",
+    "node-uuid": "1.4.x",
+    "benchmark.js-plot": "0.1.x"
   },
   "directories": {
     "test": "test"
