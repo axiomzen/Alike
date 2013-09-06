@@ -104,3 +104,5 @@ The benchmarks are designed to reflect realistically sized sets of data. They do
 ## License
 
 Alike is licensed under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html), known as the LGPL.
+
+![Powered by Zenhub](https://github-camo.global.ssl.fastly.net/0b5d717a7b464e5c31e9160256c9b5d56a1f3f08/687474703a2f2f692e696d6775722e636f6d2f714730517231432e706e67)
