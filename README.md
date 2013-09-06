@@ -97,7 +97,7 @@ Alike is written in CoffeeScript in the `coffee/` folder. You may use `make coff
 
 ## Benchmarks
 
-Run it with `coffee benchmark/` takes about 280s on a Macbook Air.
+Run it with `coffee benchmark/` takes about 1m on a Macbook Air.
 
 The benchmarks are designed to reflect realistically sized sets of data. They don't ship with the `npm` package to keep things light.
 
