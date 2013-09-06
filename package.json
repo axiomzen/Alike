@@ -33,5 +33,8 @@
     "url": "https://github.com/axiomzen/Alike"
   },
   "bugs": "https://github.com/axiomzen/Alike/issues",
-  "license": "LGPL"
+  "license": "LGPL",
+  "dependencies": {
+    "stable": "~0.1.3"
+  }
 }

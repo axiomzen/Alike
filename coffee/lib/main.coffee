@@ -14,6 +14,7 @@
 ###
 
 util = require './util'
+stable = require 'stable'
 module.exports = (subject, objects, options) ->
   # Argument checks
   if arguments.length < 2
@@ -61,7 +62,7 @@ module.exports = (subject, objects, options) ->
     dist: util.distance(subject, object, {stdv: stdv, weights: weights})
 
   # Sort distances ascending
-  sortMap = distances.sort (a,b) -> a.dist - b.dist
+  sortMap = stable distances, (a,b) -> a.dist - b.dist
 
   # Copy objects in sorted order using sortMap
   sortedObjects = for i in sortMap
