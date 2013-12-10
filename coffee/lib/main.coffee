@@ -11,6 +11,7 @@
           e.g. if subject is {a:0} and objects are [{x: {a: 0}}, {x: {a: 2}}], then provide key: function(o) {return o.x}
       - filter: (default = none) a filter function that returns true for items to be considered
           e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
+      - relax_missing: (default = false) if true, will not raise exception in case an attrbiute is missing, but will apply a penalty to the missing attribute.
 ###
 
 util = require './util'
@@ -41,10 +42,11 @@ module.exports = (subject, objects, options) ->
   unless objects_mapped.length
     return []
 
-  for attr of subject
-    for o in objects_mapped
-      unless attr of o
-        throw new Error("Missing attribute '#{attr}' in '#{JSON.stringify(o)}'")
+  unless options?.relax_missing
+    for attr of subject
+      for o in objects_mapped
+        unless attr of o
+          throw new Error("Missing attribute '#{attr}' in '#{JSON.stringify(o)}'")
 
   # If standardize option is set to true, precalculate each attribute's stdv
   stdv = {}

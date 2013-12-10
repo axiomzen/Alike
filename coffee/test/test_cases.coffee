@@ -13,8 +13,8 @@ describe 'K Nearest Neighbor', ->
     profile3 = testCase.subject3
     options = k: 3
 
-    console.log '       --- TEST CASE ---'
-    console.log testCase.chart
+    # console.log '       --- TEST CASE ---'
+    # console.log testCase.chart
 
     it 'should return the nearest neighbor', ->
       knn(profile1, objects)[0].label.should.eql('C')
@@ -52,3 +52,19 @@ describe 'K Nearest Neighbor', ->
         getLabels(knn(profile1, objects, options)).should.eql(['K', 'C', 'H'])
         getLabels(knn(profile2, objects, options)).should.eql(['E', 'A', 'I'])
         getLabels(knn(profile3, objects, options)).should.eql(['B', 'J', 'L'])
+
+  describe 'with collection items that are missing some attribute', ->
+    testCase = require './test_case_missing'
+    objects = testCase.objects
+    profile1 = testCase.subject1
+    options = k: 10, standardize: true, relax_missing: true
+
+    console.log testCase.chart
+
+    results = knn(profile1, objects, options)#[0].label.should.eql('C')
+    console.log profile1
+    console.log results
+    "a".should.eql "a"
+
+
+

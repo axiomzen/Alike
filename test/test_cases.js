@@ -23,8 +23,6 @@
       options = {
         k: 3
       };
-      console.log('       --- TEST CASE ---');
-      console.log(testCase.chart);
       it('should return the nearest neighbor', function() {
         knn(profile1, objects)[0].label.should.eql('C');
         knn(profile2, objects)[0].label.should.eql('E');
@@ -41,7 +39,7 @@
         return getLabels(knn(profile3, objects.slice(0, 2), options)).should.eql(['B', 'A']);
       });
     });
-    return describe('with testCase that requires standardized Euclidean distance', function() {
+    describe('with testCase that requires standardized Euclidean distance', function() {
       var objects, options, profile1, profile2, profile3, testCase;
       testCase = require('./test_case_standardize');
       objects = testCase.objects;
@@ -77,6 +75,22 @@
           return getLabels(knn(profile3, objects, options)).should.eql(['B', 'J', 'L']);
         });
       });
+    });
+    return describe('with collection items that are missing some attribute', function() {
+      var objects, options, profile1, results, testCase;
+      testCase = require('./test_case_missing');
+      objects = testCase.objects;
+      profile1 = testCase.subject1;
+      options = {
+        k: 10,
+        standardize: true,
+        relax_missing: true
+      };
+      console.log(testCase.chart);
+      results = knn(profile1, objects, options);
+      console.log(profile1);
+      console.log(results);
+      return "a".should.eql("a");
     });
   });
 
