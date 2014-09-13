@@ -1,6 +1,7 @@
 Alike
 =============
 [![Build Status](https://travis-ci.org/axiomzen/Alike.png?branch=master)](https://travis-ci.org/axiomzen/Alike)
+<a href="https://zenhub.io"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png" height="18px"></a>
 
 A simple-but-useful kNN library for NodeJS, comparing JSON Objects using Euclidean distances, returning top k closest objects.
 
@@ -104,5 +105,3 @@ The benchmarks are designed to reflect realistically sized sets of data. They do
 ## License
 
 Alike is licensed under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html), known as the LGPL.
-
-[![Powered by ZenHub.io](https://raw.github.com/axiomzen/zenhub-now/master/powered-by-zenhub-720.png)](https://zenhub.io)
