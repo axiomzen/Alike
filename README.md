@@ -102,6 +102,11 @@ Run it with `coffee benchmark/` takes about 1m on a Macbook Air.
 
 The benchmarks are designed to reflect realistically sized sets of data. They don't ship with the `npm` package to keep things light.
 
+## Contributors
+
+[flockonus](https://github.com/flockonus)
+[mhahmadi](https://github.com/mhahmadi)
+
 ## License
 
 Alike is licensed under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html), known as the LGPL.
