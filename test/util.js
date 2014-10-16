@@ -84,9 +84,6 @@
         b: 3
       }, [
         {
-          a: 1,
-          b: 3
-        }, {
           a: 5,
           b: 5
         }, {
@@ -112,7 +109,7 @@
         }
       }).should.eql(4);
     });
-    return it('should calculate correctly for 2 dimensions', function() {
+    it('should calculate correctly for 2 dimensions', function() {
       return utils.distance({
         a: 1,
         b: 30
@@ -125,6 +122,20 @@
           b: 10
         }
       }).should.eql(8);
+    });
+    return it('should calculate correctly for stdv of 0', function() {
+      return utils.distance({
+        a: 1,
+        b: 30
+      }, {
+        a: 1,
+        b: 30
+      }, {
+        stdv: {
+          a: 0,
+          b: 0
+        }
+      }).should.eql(0);
     });
   });
 
