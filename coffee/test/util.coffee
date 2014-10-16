@@ -34,6 +34,9 @@ describe 'Standardized Euclidean Distance function', ->
     utils.distance({ a: 1 }, { a: 5 }, { stdv: { a: 2 } }).should.eql(4)
   it 'should calculate correctly for 2 dimensions', ->
     utils.distance({ a: 1, b: 30 }, { a: 5, b: 50 }, { stdv: { a: 2, b: 10 } }).should.eql(8)
+  it 'should calculate correctly for stdv of 0', ->
+    utils.distance({ a: 1, b: 30 }, { a: 1, b: 30 }, { stdv: { a: 0, b: 0 } }).should.eql(0)
+
 
 # describe.skip 'Standardize', ->
 #   it 'returns the array in units of stdv from mean', ->
