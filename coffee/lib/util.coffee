@@ -57,8 +57,10 @@ exports.stdv = (array, key) ->
 ###
 exports.allStdvs = (subject, objects) ->
   stdvs = {}
+  objectsClone = objects.slice(0)
+  objectsClone.push subject
   for attr of subject
-    stdvs[attr] = exports.stdv(objects, attr)
+    stdvs[attr] = exports.stdv(objectsClone, attr)
   stdvs
 
 
