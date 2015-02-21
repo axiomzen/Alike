@@ -10,7 +10,10 @@
    - [weights] defines the weights for each attr (todo)
 ###
 exports.distance = (p1, p2, opts) ->
-  dist = 0
+  dist =
+    distance: 0
+    details: {}
+
   for attr, val of p1
     x = val
     y = p2[attr]
@@ -25,8 +28,12 @@ exports.distance = (p1, p2, opts) ->
       x *= opts.weights[attr]
       y *= opts.weights[attr]
 
-    dist += Math.pow x - y, 2
-  dist
+    distance = Math.pow x - y, 2
+
+    dist.details[attr] = distance
+    dist.distance += distance
+
+  if opts?.debug then dist else dist.distance
 
 ###
   Standard Deviation
