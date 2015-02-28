@@ -56,3 +56,6 @@ describe 'K Nearest Neighbor', ->
       nearestNeighbor({a:1}, [{a:1}, {a:3}, {a:0}], {k:2, filter: (o) -> o.a > 10}).should.eql([])
     it 'should default to unlimited if no k is provided', ->
       nearestNeighbor({a:1}, [{a:1}, {a:2}, {a:3}]).should.eql([{a:1}, {a:2}, {a:3}])
+    it 'should return distances if debug option is provided', ->
+      nearestNeighbor({a:0, b:0}, [{a:3, b:4}], {debug: true}).should.eql([{a:3, b:4, debug: {distance: 25, details: {a: 9, b: 16}}}])
+

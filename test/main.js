@@ -217,7 +217,7 @@
           }
         }).should.eql([]);
       });
-      return it('should default to unlimited if no k is provided', function() {
+      it('should default to unlimited if no k is provided', function() {
         return nearestNeighbor({
           a: 1
         }, [
@@ -235,6 +235,31 @@
             a: 2
           }, {
             a: 3
+          }
+        ]);
+      });
+      return it('should return distances if debug option is provided', function() {
+        return nearestNeighbor({
+          a: 0,
+          b: 0
+        }, [
+          {
+            a: 3,
+            b: 4
+          }
+        ], {
+          debug: true
+        }).should.eql([
+          {
+            a: 3,
+            b: 4,
+            debug: {
+              distance: 25,
+              details: {
+                a: 9,
+                b: 16
+              }
+            }
           }
         ]);
       });
