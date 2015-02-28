@@ -21,6 +21,9 @@ options:
         e.g. if subject is {a:0} and objects are [{x: {a: 0}}, {x: {a: 2}}], then provide key: function(o) {return o.x}
     - filter: (default = none) a filter function that returns true for items to be considered
         e.g. to only consider objects with non-negative a: function(o) {return o.a >= 0})
+    - debug: (default = false) if true, for every object will return distances of individual attributes as well as the overall distance from the subject under a property called 'debug'
+        e.g. if subject is {a:0, b:0} and object is {a:3, b:4}, the returned object will be {a: 3, b: 4, debug: {distance:25, details: {a: 9, b: 16}}}
+
 ```
 ## Example usage
 
