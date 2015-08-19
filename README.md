@@ -1,5 +1,7 @@
 Alike
 =============
+
+[![Join the chat at https://gitter.im/axiomzen/Alike](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/axiomzen/Alike?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/axiomzen/Alike.png?branch=master)](https://travis-ci.org/axiomzen/Alike)
 <a href="https://zenhub.io"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png" height="18px"></a>
 
